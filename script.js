@@ -27,8 +27,7 @@ function changeWhite(e) {
 }
 
 const gridButton = document.createElement("button");
-gridButton.textContent = "New Grid";
-document.body.insertBefore(gridButton, gridContainer);
+gridButton.innerHTML = "<span class=\"button_top\">Create Grid</span>"
 
 gridButton.addEventListener("click", () => {
     let newSize = prompt("Enter the number of squares per side (max 100): ");
@@ -47,13 +46,50 @@ function clearGrid() {
 
 
 const resetButton = document.createElement("button");
-resetButton.textContent = "Reset";
-document.body.insertBefore(resetButton, gridContainer);
+resetButton.innerHTML = "<span class=\"button_top\">Reset</span>"
+
 resetButton.addEventListener("click", function() {
     const squares = document.querySelectorAll(".grid-square");
     squares.forEach(function(square) {
         changeWhite(square);
     });
 });
+
+//
+const eraseButton = document.createElement("button");
+eraseButton.innerHTML = "<span class=\"button_top\">Erase</span>";
+eraseButton.addEventListener("click", function() {
+    const squares = document.querySelectorAll(".grid-square");
+    squares.forEach(function(square) {
+        square.addEventListener("mouseover", function() {
+            square.style.backgroundColor = "white";
+        })
+    });
+});
+
+const paintButton = document.createElement("button");
+paintButton.innerHTML = "<span class=\"button_top\">Draw</span>";
+paintButton.addEventListener("click", function() {
+    const squares = document.querySelectorAll(".grid-square");
+    squares.forEach(function(square) {
+        square.addEventListener("mouseover", function() {
+            square.style.backgroundColor = "black";
+        })
+    });
+});
+
+//
+
+
+const buttonDiv = document.createElement("div");
+buttonDiv.classList.add("button-div");
+document.querySelector("body").appendChild(buttonDiv);
+buttonDiv.appendChild(gridButton);
+buttonDiv.appendChild(resetButton);
+buttonDiv.appendChild(eraseButton);
+buttonDiv.append(paintButton);
+
+
+document.body.insertBefore(buttonDiv, gridContainer);
 
     

@@ -18,6 +18,7 @@ body {
     width:500px;
     height:500px;
     border: 2px solid black;
+
 }
 
 .grid-square {
@@ -62,3 +63,4 @@ button:active .button_top {
   display:flex;
   gap:20px;
 }
+
